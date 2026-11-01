@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../assets/styles/styles.css"
+    />
+    <title>Level XML Map Transformer</title>
+  </head>
+  <header>
+    <div class="flex-container flex-row flex-center header-title">
+      <div class="flex-container flex-column">
+        <strong>
+          <span class="tool-title">HWXMLT</span>
+        </strong>
+        <strong><span>Happy Wheels XML Tools</span></strong>
+      </div>
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="Enable Dark Mode"
+        aria-pressed="false"
+        class="theme-button"
+        onclick="toggleTheme()"
+      >
+        Toggle Theme
+      </button>
+    </div>
+  </header>
+  <body>
+    <div class="container">
+      <section class="tool-section full-control">
+        <section class="tool-title-author-group">
+          <span class="tool-title">Map Transformer</span>
+          <span class="author-span"
+            >By <span class="author-name">Dylan Snider</span></span
+          >
+        </section>
+        <div class="flex-container flex-column">
+          <label for="inputXml" class="tool-label"
+            ><strong>Input Level XML:</strong></label
+          >
+          <textarea
+            id="inputXml"
+            placeholder="Paste level XML here..."
+          ></textarea>
+        </div>
+        <fieldset class="input-group control-group">
+          <legend class="tool-label">Select Transformation</legend>
+          <div class="compact-grid">
+            <div class="option-row" title="(across X-axis of origin)">
+              <label class="checkbox-label" for="flipX"
+                ><input
+                  type="radio"
+                  id="flipX"
+                  name="transform"
+                  value="flipX"
+                  checked
+                />Flip Horizontally</label
+              >
+            </div>
+            <div class="option-row" title="(across Y-axis of origin)">
+              <label class="checkbox-label" for="flipY"
+                ><input
+                  type="radio"
+                  id="flipY"
+                  name="transform"
+                  value="flipY"
+                />Flip Vertically</label
+              >
+            </div>
+            <div class="option-row" title="(180° rotate across origin)">
+              <label class="checkbox-label" for="flipBoth"
+                ><input
+                  type="radio"
+                  id="flipBoth"
+                  name="transform"
+                  value="flipBoth"
+                />Flip Upside-Down</label
+              >
+            </div>
+            <div class="option-row">
+              <label class="checkbox-label" for="dilate"
+                ><input
+                  type="radio"
+                  id="dilate"
+                  name="transform"
+                  value="dilate"
+                />Dilate (Scale):</label
+              >
+              <input
+                type="number"
+                id="scaleFactor"
+                value="2"
+                step="0.1"
+                placeholder="Factor (k)"
+              />
+            </div>
+            <div class="option-row">
+              <label class="checkbox-label" for="rotate"
+                ><input
+                  type="radio"
+                  id="rotate"
+                  name="transform"
+                  value="rotate"
+                />Rotate:</label
+              >
+              <input
+                type="number"
+                id="rotateDegrees"
+                value="90"
+                step="1"
+                placeholder="Degrees (°)"
+              />&nbsp;degrees
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="control-group">
+          <legend class="tool-label">Dilation Toggles</legend>
+          <div class="option-row">
+            <label class="checkbox-label" for="dilateTriggers"
+              ><input
+                type="checkbox"
+                id="dilateTriggers"
+                name="dilateTriggers"
+                checked
+              />Dilate Triggers (width <code>w</code> & height
+              <code>h</code>)</label
+            >
+          </div>
+          <div class="option-row">
+            <label class="checkbox-label" for="dilateJointSpeed"
+              ><input
+                type="checkbox"
+                id="dilateJointSpeed"
+                name="dilateJointSpeed"
+              />Dilate Joint Speed <code>sp</code> (Motor cap: -20 to 20,
+              Sliding cap: -50 to 50)</label
+            >
+          </div>
+          <div class="option-row">
+            <label class="checkbox-label" for="dilateSlidingLimits"
+              ><input
+                type="checkbox"
+                id="dilateSlidingLimits"
+                name="dilateSlidingLimits"
+              />Dilate Sliding Joint Limits <code>ul</code> &
+              <code>ll</code> (Capped at [0, 3000] and [-3000, 0])</label
+            >
+          </div>
+          <div class="option-row">
+            <label class="checkbox-label" for="forceCanvasCenter"
+              ><input
+                type="checkbox"
+                id="forceCanvasCenter"
+                name="forceCanvasCenter"
+              />Force Canvas Center (10000, 5000) as origin (ignore "0,0" text
+              box)</label
+            >
+          </div>
+          <div class="info" id="originInfo">
+            Origin Point: Will look for "0,0" text box inside &lt;specials&gt;,
+            or default to (10000, 5000).
+          </div>
+        </fieldset>
+        <div class="disclaimer-box">
+          <strong>⚠️ Notice:</strong> Most other assets won't be converted, and
+          grouped assets may vary in success. It is best to add shapes and art
+          into a model after the conversion is complete.
+        </div>
+        <button onclick="processXML()">Transform XML</button>
+        <div class="flex-container flex-column">
+          <label class="tool-label" for="outputXmlMain"
+            ><strong>Transformed Level XML Output:</strong></label
+          >
+          <textarea
+            id="outputXmlMain"
+            readonly
+            placeholder="Transformed level XML will appear here..."
+          ></textarea>
+        </div>
+      </section>
+    </div>
+    <script src="../../scripts/tools/map-transformer.js"></script>
+    <script src="../../scripts/apply-theme.js"></script>
+    <script src="../../scripts/toggle-theme.js" /></script>
+  </body>
+</html>

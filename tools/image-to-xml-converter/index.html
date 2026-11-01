@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Wheels LevelXML Vector Converter</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../assets/styles/styles.css"
+    />
+  </head>
+  <header>
+    <div class="flex-container flex-row flex-center header-title">
+      <div class="flex-container flex-column">
+        <strong>
+          <span class="tool-title">HWXMLT</span>
+        </strong>
+        <strong><span>Happy Wheels XML Tools</span></strong>
+      </div>
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="Enable Dark Mode"
+        aria-pressed="false"
+        class="theme-button"
+        onclick="toggleTheme()"
+      >
+        Toggle Theme
+      </button>
+    </div>
+  </header>
+  <body>
+    <div class="container">
+      <section class="tool-section">
+        <div class="flex-container flex-column">
+          <section class="tool-title-author-group">
+            <span class="tool-title"
+              >Happy Wheels LevelXML Vector Converter</span
+            >
+            <span class="author-span"
+              >By <span class="author-name">Dylan Snider</span>
+            </span>
+          </section>
+          <label class="flex-container flex-column">
+            Select Image:
+            <input type="file" id="imageInput" accept="image/*" />
+          </label>
+          <fieldset class="compact-grid" id="settings-xml-converter-fieldset">
+            <legend class="tool-label">Settings</legend>
+            <label class="flex-container flex-column">
+              Target Width (HW Units):
+              <input
+                type="number"
+                id="targetWidthHW"
+                value="150"
+                min="1"
+                step="any"
+                oninput="onWidthHWChange()"
+              />
+            </label>
+            <label class="flex-container flex-column">
+              Target Height (HW Units):
+              <input
+                type="number"
+                id="targetHeightHW"
+                value="150"
+                min="1"
+                step="any"
+                oninput="onHeightHWChange()"
+              />
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="lockAspect" checked /> Lock Aspect
+              Ratio
+            </label>
+            <label class="flex-container flex-column">
+              Color Tolerance:
+              <input
+                type="number"
+                id="colorTolerance"
+                value="25"
+                min="1"
+                max="100"
+              />
+            </label>
+            <label class="flex-container flex-column">
+              Min Shape Size (px):
+              <input
+                type="number"
+                id="minShapePixels"
+                value="8"
+                min="1"
+                max="100"
+              />
+            </label>
+            <label class="flex-container flex-column">
+              Max Vertices / Shape:
+              <input
+                type="number"
+                id="maxVertices"
+                value="95"
+                min="10"
+                max="99"
+              />
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="despeckle" checked /> Clean Gradient
+              Specks
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="enableExpand" checked /> Bleed Internal
+              Seams
+            </label>
+            <label class="flex-container flex-column">
+              Internal Bleed (HW Units):
+              <input
+                type="number"
+                id="expandAmount"
+                value="0.35"
+                min="0.05"
+                max="5"
+                step="0.05"
+              />
+            </label>
+            <label id="xml-info-convert">
+              <span id="hwSizeDisplay"
+                >Target XML Bounds: 150.0 x 150.0 HW Units (~1.5 characters
+                tall)</span
+              >
+            </label>
+            <button onclick="processImage()">Convert to LevelXML</button>
+          </fieldset>
+          <fieldset class="input-group">
+            <legend class="tool-label">Vector Path Preview</legend>
+            <div class="preview-box">
+              <div class="preview-header">
+                <label>
+                  Preview Background:
+                  <select id="bgToggle" onchange="updateCanvasBackground()">
+                    <option value="#111111">Dark Gray (Default)</option>
+                    <option value="#ffffff">White</option>
+                    <option value="#000000">Black</option>
+                    <option value="#00ff00">Green</option>
+                  </select>
+                </label>
+              </div>
+              <canvas id="previewCanvas"></canvas>
+            </div>
+          </fieldset>
+          <div class="stats" id="statusText">
+            Upload an image and click Convert.
+          </div>
+          <div style="margin-top: 15px">
+            <button onclick="copyToClipboard()" style="margin-bottom: 8px">
+              Copy XML to Clipboard
+            </button>
+            <textarea
+              id="xmlOutput"
+              readonly
+              placeholder="LevelXML output will appear here..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="../../scripts/tools/image-to-xml-converter.js"></script>
+    <script src="../../scripts/toggle-theme.js" /></script>
+        <script src="../../scripts/apply-theme.js"></script>
+  </body>
+</html>

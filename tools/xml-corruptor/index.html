@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Happy Wheels Level Corruptor</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../assets/styles/styles.css"
+    />
+  </head>
+  <header>
+    <div class="flex-container flex-row flex-center header-title">
+      <div class="flex-container flex-column">
+        <strong>
+          <span class="tool-title">HWXMLT</span>
+        </strong>
+        <strong><span>Happy Wheels XML Tools</span></strong>
+      </div>
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="Enable Dark Mode"
+        aria-pressed="false"
+        class="theme-button"
+        onclick="toggleTheme()"
+      >
+        Toggle Theme
+      </button>
+    </div>
+  </header>
+  <body>
+    <div class="container">
+      <section class="tool-section">
+        <section class="tool-title-author-group">
+          <span class="tool-title">Happy Wheels Level Corruptor</span>
+          <span class="author-span"
+            >By <span class="author-name">Dylan Snider</span> &
+            <span class="author-name">Spencer</span></span
+          >
+        </section>
+        <fieldset class="input-group">
+          <legend class="tool-label">Select Level Text File:</legend>
+          <input type="file" id="fileInput" accept=".txt,.xml" />
+        </fieldset>
+        <!-- <label for="corruptor-settings" class="tool-label"
+          >Configure your corruption settings:</label
+        > -->
+        <div class="full-control" id="corruptor-settings">
+          <fieldset class="control-group">
+            <legend class="tool-label">Corruption Options:</legend>
+            <label class="checkbox-label">
+              <input type="checkbox" id="includePhysicalCheck" checked />
+              Include Physical Shapes (Blocks, Circles, Triangles, Polygons)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="includeArtCheck" checked />
+              Include Art Shapes (Custom Drawn Shapes / Type 4)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="randomizeColorsCheck" checked />
+              Corrupt Body Colors (p8 and bgc)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="includeOutlinesCheck" />
+              Corrupt Outline Colors (p9)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="includeDensityCheck" />
+              Corrupt Shape Density (p7)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="includePositionCheck" />
+              Corrupt Positions (p0 and p1)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="includeRotationCheck" />
+              Corrupt Rotations (p4/p2/a) - 50% Intensity
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="includeVerticesCheck" checked />
+              Corrupt Vertices (v0="X_Y", v1="X_Y", etc.)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="includeTriggersCheck" />
+              Corrupt Trigger Delays (d="...")
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="includeTextCheck" checked />
+              Corrupt Text (Text Fields)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="includeTextFormattingCheck" />
+              Corrupt Text Font & Size (p4 and p5 on Text Specials)
+            </label>
+          </fieldset>
+          <fieldset class="input-group">
+            <legend class="tool-label">Corruption Intensity (%):</legend>
+            <input
+              type="number"
+              id="intensityInput"
+              value="100"
+              min="1"
+              max="1000"
+            />
+            <small style="color: #777"
+              >1% = Subtle shifts/tweaks | 100% = Standard | 200%+ = Extreme /
+              Nuclear</small
+            >
+          </fieldset>
+        </div>
+      </section>
+    </div>
+    <script src="../../scripts/toggle-theme.js"></script>
+    <script src="../../scripts/tools/hw-xml-corruptor.js"></script>
+    <script src="../../scripts/apply-theme.js"></script>
+  </body>
+</html>

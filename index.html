@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Happy Wheels Level Corruptor</title>
+    <link rel="stylesheet" type="text/css" href="./assets/styles/styles.css" />
+  </head>
+  <header>
+    <div class="flex-container flex-row flex-center header-title">
+      <div class="flex-container flex-column">
+        <strong>
+          <span class="tool-title">HWXMLT</span>
+        </strong>
+        <strong><span>Happy Wheels XML Tools</span></strong>
+      </div>
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="Enable Dark Mode"
+        aria-pressed="false"
+        class="theme-button"
+        onclick="toggleTheme()"
+      >
+        Toggle Theme
+      </button>
+    </div>
+  </header>
+  <body>
+    <div class="container">
+      <section id="tool-selector">
+        <div class="image-thumbnail-container">
+          <a href="./tools/image-to-xml-converter">
+            <img
+              src="./assets/images/image3.png"
+              alt="Sample Image"
+              class="image-thumbnail"
+            />
+            <span class="tool-title-thumbnail">Image To XML</span>
+          </a>
+        </div>
+        <div class="image-thumbnail-container">
+          <a href="./tools/map-transformer">
+            <img
+              src="./assets/images/image2.png"
+              alt="Sample Image"
+              class="image-thumbnail"
+            />
+            <span class="tool-title-thumbnail">Map Transformer</span>
+          </a>
+        </div>
+        <div class="image-thumbnail-container">
+          <a href="./tools/xml-corruptor">
+            <img
+              src="./assets/images/image1.png"
+              alt="Sample Image"
+              class="image-thumbnail"
+            />
+            <span class="tool-title-thumbnail">Level Corruptor</span>
+          </a>
+        </div>
+      </section>
+    </div>
+    <script src="/scripts/toggle-theme.js" />
+  </body>
+</html>
